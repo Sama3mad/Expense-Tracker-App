@@ -9,8 +9,8 @@ final formatter = DateFormat.yMd();
 
 const categoryIcons = {
 Category.food : Icons.fastfood,
-Category.travel : Icons.flight_class_sharp,
-Category.leisure: Icons.movie,
+Category.travel : Icons.flight_land_sharp,
+Category.leisure: Icons.videogame_asset,
 Category.work : Icons.work,
 };
 //map

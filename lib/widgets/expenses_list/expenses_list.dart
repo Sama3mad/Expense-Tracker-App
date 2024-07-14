@@ -3,8 +3,8 @@ import 'package:third_app/models/expense.dart';
 import 'package:third_app/widgets/expenses_list/expense_item.dart';
 
 class ExpensesList extends StatelessWidget {
-  ExpensesList({super.key, required this.expenses});
-
+  ExpensesList({super.key, required this.expenses, required this.onRemoveExpense});
+  Function onRemoveExpense;
   List<Expense> expenses;
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,11 @@ class ExpensesList extends StatelessWidget {
     return ListView.builder(
         itemCount: expenses.length,
         itemBuilder: (context, index) {
-          return ExpenseItem(expense: expenses[index]);
+          return Dismissible(
+              key: ValueKey(expenses[index]),
+              onDismissed: (direction) => onRemoveExpense(expenses[index]),
+              child: ExpenseItem(expense: expenses[index]));
+          //Often used for swipe-to-dismiss functionality, like deleting an item from a list.
         });
   }
 }
